@@ -10,20 +10,16 @@ To run this quickstart, you need the following prerequisites:</br> https://devel
 1. To create a project and enable an API,
    - NOTE : For this quickstart, you are enabling the “Google Sheets API”
 
-2. Copy the credentials.json and replace with current credential.json file
+2. Copy the credentials.json and add  in project directory (StringLocalizationGenerator/credentials.json)
 
 ## Download
-Download jar file of [Language Translate](LanguageTranslate.zip)
-
-## How to use
-Run .jar file.
+Download jar file of [String Localization](lib/StringLocalization.jar)
+</br>NOTE : if you directly run jar, please put credentials.json file in the folder where your jar file exists. 
+## How to Run .jar file.
 
      * cmd : java -jar <jar-file-name>.jar
 
-Also, you can run jar using .bat file or .sh file as per operating system
-
-
-After executing .jar file
+After executing .jar file or directly run program
 1. Please enter google sheet url
 2. Please enter google sheet name
 3. Please enter language and its code (i.e. China=zh,Canada=fr) :
