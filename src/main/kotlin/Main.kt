@@ -107,7 +107,7 @@ private fun getSheetName(): String {
 
 private fun getLanguage(): ArrayList<LanguageModel> {
     val languageList = arrayListOf<LanguageModel>()
-    printMessage("Please enter language code (i.e. German=de,French(Standard)=fr,French(Belgium)=fr-be")
+    printMessage("Please enter language code (i.e. German=de,French(Standard)=fr,French(Belgium)=fr-be )")
     val language: String = scanner.nextLine()
     if (language.isNullOrEmpty()) {
         getLanguage()
