@@ -83,7 +83,7 @@ private fun getSheetId(): String {
     if (url.isNullOrEmpty()) {
         getSheetId()
     }
-    var id=""
+    var id = ""
     if (url.contains("/d/") && url.contains("/edit")) {
         val _d = url.split("/d/").toTypedArray()
         val _id = _d[1].split("/edit").toTypedArray()
@@ -107,7 +107,7 @@ private fun getSheetName(): String {
 
 private fun getLanguage(): ArrayList<LanguageModel> {
     val languageList = arrayListOf<LanguageModel>()
-    printMessage("Please enter language and its code (i.e. China=zh,Canada=fr) : ")
+    printMessage("Please enter language code (i.e. German=de,French(Standard)=fr,French(Belgium)=fr-be")
     val language: String = scanner.nextLine()
     if (language.isNullOrEmpty()) {
         getLanguage()
@@ -120,7 +120,7 @@ private fun getLanguage(): ArrayList<LanguageModel> {
                 languageList.add(LanguageModel(codes[0], codes[1]))
             }
         } catch (e: Exception) {
-            printErrorMessage("Invalid language format.")
+            printErrorMessage("Language should be in 'LanguageName=LanguageCode' format.")
             getLanguage()
         }
     }
@@ -132,23 +132,15 @@ private fun getXmlFile(): File {
     printMessage("Please enter 'String.xml' file path (i.e.D:\\string.xml): ")
     val file: String = scanner.nextLine()
     val xmlFile = File(file)
-    if (file.isEmpty()) {
+    return if (file.isEmpty()) {
         getXmlFile()
-
+    } else if (!xmlFile.exists()) {
+        printMessage("File $file not found.")
+        getXmlFile()
     } else {
-        try {
-            val xmlFile = File(file)
-            if (!xmlFile.exists()) {
-                printMessage("File $file not found.")
-                getXmlFile()
-
-            }
-        } catch (e: Exception) {
-            printMessage("Please enter String.xml file path (i.e.D:\\string.xml): ")
-            getXmlFile()
-        }
+        xmlFile
     }
-    return xmlFile
+
 }
 
 

@@ -72,7 +72,7 @@ class GoogleSheetWriter {
     private fun headerItem(languages: ArrayList<LanguageModel>): ArrayList<String>{
         val list = ArrayList<String>()
         list.add("")
-        list.add("")
+        list.add("English")
         for (i in languages.indices) {
             list.add(languages[i].name)
         }

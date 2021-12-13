@@ -24,7 +24,8 @@ class GoogleSheetReader {
     //Read Data From Google sheet
     fun readGoogleSheet(inputModel: InputModel) {
         try {
-            val response = getSheetsService().spreadsheets().values()[inputModel.sheetId, inputModel.sheetName].execute()
+            val response =
+                getSheetsService().spreadsheets().values()[inputModel.sheetId, inputModel.sheetName].execute()
             val values = response.getValues()
             val dbFactory = DocumentBuilderFactory.newInstance()
             val dBuilder = dbFactory.newDocumentBuilder()
@@ -58,9 +59,18 @@ class GoogleSheetReader {
                     val transformerFactory = TransformerFactory.newInstance()
                     val transformer = transformerFactory.newTransformer()
                     val source = DOMSource(docWrite)
+                    val path = if (inputModel.xmlFile.parentFile.path.substringAfterLast("/") == "values") {
+                        inputModel.xmlFile.parentFile.parentFile
+                    } else {
+                        inputModel.xmlFile.parentFile
+                    }
+                    val destinationPath = File(path, "values-${inputModel.list.get(i).code}")
+                    if (!destinationPath.exists()) {
+                        destinationPath.mkdir()
+                    }
                     val file = File(
-                        inputModel.xmlFile.parentFile,
-                        getBaseName( inputModel.xmlFile.name) + "_" + columnList!![i + 2] + ".xml"
+                        destinationPath,
+                        getBaseName(inputModel.xmlFile.name) + ".xml"
                     )
                     val result = StreamResult(file)
                     transformer.transform(source, result)
