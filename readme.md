@@ -2,8 +2,8 @@
 
 - This program will read from your application string.xml file and generate translated strings.xml files in your
   preferred languages using google sheet.
-- Why using google sheet?
-- To avoid high transaction charges on API requests for translation. Or spending money on a Translator. 😉
+- Why using google sheet?</br>
+  To avoid high transaction charges on API requests for translation. Or spending money on a Translator. 😉
 
 ## Prerequisites
 
@@ -36,6 +36,7 @@ After executing .jar file or directly run program
 
 5. For download translated language files type 'downloadFiles'
 
+![Procedure:](images/img_localization_run.png)
 ## NOTE
 
      1. Google sheet must be public with read and write permission.
